@@ -16,6 +16,7 @@ misc = settings["misc"]
 apikeys = misc["weatherapikeys"].split()
 if len(apikeys) == 0:
     print("WeatherMod Log: You haven't added any AccuWeather API key in settings.json, thus the module will not work.")
+    # go to https://developer.accuweather.com/ get a free key it'll give ya 100 calls per month.
 else:
     apikey = apikeys[0]
 global retries
