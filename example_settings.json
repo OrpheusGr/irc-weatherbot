@@ -1,0 +1,11 @@
+{
+    "irc": {
+        "server": "server.address.here",
+        "port": "6667",
+        "nickname": "Weather",
+        "channels": ["#channel1", "#channel2"]
+    },
+    "misc": {
+        "weatherapikeys": "you can put multiple keys here, seperate them with spaces"
+    }
+}
