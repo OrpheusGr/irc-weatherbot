@@ -1,13 +1,18 @@
 import irc.client
 import weathermodule
 import time
+import json
 loopin = 0
 weather = weathermodule
+f = open("settings.json", encoding="utf-8")
+settings = json.loads(f.read())
+f.close()
+irc_settings = settings["irc"]
+
 
 def on_connect(connection, event):
     print("Connected successfully")
-    channels = ["#chaos", "#lobby", "#chat"]
-    for i in channels:
+    for i in irc_settings["channels"]:
         connection.join(i)
 
 def on_pubmsg(connection, event):
@@ -24,7 +29,7 @@ def on_pubmsg(connection, event):
 def startirct():
     global loopin
     react = irc.client.Reactor()
-    c = react.server().connect("ircqchat.com", 6667, "weather", None, "IrCQChat", "I do them weather stuff")
+    c = react.server().connect(irc_settings["server"], irc_settings["port"], irc_settings["nickname"], None, "weather", "I do them weather stuff")
     c.add_global_handler("welcome", on_connect)
     c.add_global_handler("pubmsg", on_pubmsg)
     loopin = 1

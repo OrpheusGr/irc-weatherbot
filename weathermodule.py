@@ -3,7 +3,6 @@ import json
 import datetime
 import csv
 import os
-import condition_emoji
 
 global apikeys
 global apikey
