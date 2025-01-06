@@ -48,7 +48,7 @@ def caller(msg, nickhost):
     if symbol not in symbols:
         return ["False"]
     triggerw = ["weather", "w", "forecast", "f", "setweather"]
-    triggerf = ["forecast", "f"]
+    triggerf = ["forecast", "f", "fc"]
     forecast = "no"
     wreply = ""
     cmd = msg[0][1:].lower()
@@ -396,11 +396,11 @@ def GetForecast(location, locname):
         AirQType = Air["Type"]
         Fcond = day["Day"]["ShortPhrase"]
         if Fcond == lastfcond:
-            theday = "[bold][%s][bold] | %s-%s%s %s-%s%s | [bold]AQI:[bold] %s" % (todayis, TempMinMetr, TempMaxMetr, TempMetrUnit, TempMinImp, TempMaxImp, TempImpUnit, AirQDesc)
+            theday = "[bold][%s][bold] | %s/%s%s %s/%s%s | [bold]AQI:[bold] %s" % (todayis, TempMinMetr, TempMaxMetr, TempMetrUnit, TempMinImp, TempMaxImp, TempImpUnit, AirQDesc)
         else:
-            theday = "[bold][%s][bold] %s | %s-%s%s %s-%s%s | [bold]AQI:[bold] %s" % (todayis, Fcond, TempMinMetr, TempMaxMetr, TempMetrUnit, TempMinImp, TempMaxImp, TempImpUnit, AirQDesc)
+            theday = "[bold][%s][bold] %s | %s/%s%s %s/%s%s | [bold]AQI:[bold] %s" % (todayis, Fcond, TempMinMetr, TempMaxMetr, TempMetrUnit, TempMinImp, TempMaxImp, TempImpUnit, AirQDesc)
         lastfcond = Fcond
-        alldays = alldays + " [bold]||[bold] " +  theday
+        alldays = alldays + "  ||  " +  theday
         theday = ""
     alldays = locname + " " + alldays
     return ["success", alldays]

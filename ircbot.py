@@ -39,8 +39,12 @@ def on_pubmsg(connection, event):
         wreply = "Error: " + isweather[1].replace("[bold]", "\x02")
         connection.privmsg(event.target, wreply)
     elif isweather[0] == "success":
-        connection.privmsg(event.target, isweather[1].replace("[bold]", "\x02"))
-
+        checkf = isweather[1].split("||")
+        if checkf == False:
+            connection.privmsg(event.target, isweather[1].replace("[bold]", "\x02"))
+        else:
+            for line in checkf:
+                connection.privmsg(event.target, line.replace("[bold]", "\x02"))
 
 def startirct():
     global loopin
