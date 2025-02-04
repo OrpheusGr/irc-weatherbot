@@ -47,8 +47,8 @@ def caller(msg, nickhost):
     symbols = ["+", "!"]
     if symbol not in symbols:
         return ["False"]
-    triggerw = ["weather", "w", "forecast", "f", "setweather"]
-    triggerf = ["forecast", "f", "fc"]
+    triggerw = ["weather", "w", "forecast", "f", "setweather", "wuser"]
+    triggerf = ["forecast", "f", "fc", "fuser"]
     forecast = "no"
     wreply = ""
     cmd = msg[0][1:].lower()
@@ -65,6 +65,8 @@ def caller(msg, nickhost):
     if len(msg) > 1:
         query = LtoS(msg[1:])
         loc = GetLocId(query)
+        if cmd in ["wuser", "fuser"]:
+            loc = GetConfig([msg[1], ""])
         if loc[0] == "error":
             return loc
     else:
