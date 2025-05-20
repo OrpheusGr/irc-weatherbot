@@ -283,6 +283,7 @@ def GetWeather(location, locname):
             return ["error", load["Message"]]
     if load == []:
         return ["error", "No results for the location you searched for"]
+    print(load[0])
     load = load[0]
     condition = load["WeatherText"]
     dayornight = load["IsDayTime"]

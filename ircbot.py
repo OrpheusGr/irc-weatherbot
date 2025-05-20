@@ -8,6 +8,8 @@ f = open("settings.json", encoding="utf-8")
 settings = json.loads(f.read())
 f.close()
 irc_settings = settings["irc"]
+irc.client.ServerConnection.buffer_class.encoding = "utf-8"
+irc.client.ServerConnection.buffer_class.errors = "replace"
 
 def save_settings(settings):
     file = "settings.json"
